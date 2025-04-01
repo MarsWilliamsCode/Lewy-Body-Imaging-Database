@@ -4,13 +4,20 @@
     <meta charset="UTF-8">
     <title>Lewy Body DB</title>
 </head>
+<style>
+table, th, td {
+  border:1px solid black;
+}
+</style>
 <body>
-    <h1>These are our scans</h1>
-    <table>
+    <h1>Scans for PD</h1>
+    <table style="width:100%">
         <tr>
             <th>Scan ID</th>
             <th>Scan Type</th>
             <th>Patient ID</th>
+            <th>Patient Diagnosis</th>
+            <th>Disease Stage</th>
             <th>Image Count</th>
         </tr>
 
@@ -19,8 +26,11 @@
                 <th>{{ scan.scan_id }}</th>
                 <th>{{ scan.scan_type }}</th>
                 <th> {{ scan.patient_id }}</th>
+                <th> {{ scan.get_patient.diagnosis }}</th>
+                <th> {{ scan.get_patient.disease_stage }}</th>
                 <th> {{ scan.image_set.all.count }}</th>
             </tr>
+
         {% endfor %}
     </table>
 

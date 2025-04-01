@@ -21,6 +21,9 @@ class Scan(models.Model):
     def __str__(self):
         return str(self.scan_id)
 
+    def get_patient(self):
+        return Patient.objects.get(patient_id=self.patient_id)
+
 class Image(models.Model):
     image_id = models.CharField( max_length=50)
     scan_id = models.ForeignKey(Scan, on_delete=models.CASCADE)
