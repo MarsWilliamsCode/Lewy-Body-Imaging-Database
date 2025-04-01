@@ -5,22 +5,22 @@ class Patient(models.Model):
     age = models.IntegerField()
     sex = models.CharField(max_length=2)
     diagnosis = models.CharField(max_length=25)
-    disease_stage = models.CharField(max_length=5)
-    enrollment_date = models.DateField()
+    disease_stage = models.CharField(max_length=5, blank=True, null=True)
+    enrollment_date = models.DateField(blank=True, null=True)
 
     def __str__(self):
-        return self.patient_id
+        return str(self.patient_id)
 
 class Scan(models.Model):
     scan_id = models.IntegerField(primary_key=True)
     patient_id = models.ForeignKey(Patient, on_delete=models.CASCADE)
     scan_type = models.CharField(max_length=25)
     scan_date = models.DateField()
-    scan_location = models.CharField(max_length=25)
+    scan_location = models.CharField(max_length=25, blank=True, null=True)
     storage_path = models.CharField(max_length=90)
 
     def __str__(self):
-        return self.scan_id
+        return str(self.scan_id)
 
 class Image(models.Model):
     image_id = models.IntegerField(primary_key=True)
@@ -28,7 +28,7 @@ class Image(models.Model):
     image_type = models.CharField(max_length=25)
 
     def __str__(self):
-        return self.image_id
+        return str(self.image_id)
 
 class Annotation(models.Model):
     annotation_id = models.IntegerField(primary_key=True)
@@ -36,4 +36,4 @@ class Annotation(models.Model):
     label = models.CharField(max_length=25)
 
     def __str__(self):
-        return self.annotation_id
+        return str(self.annotation_id)
