@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Lewy Body DB</title>
+</head>
+<body>
+    <h1>These are our scans</h1>
+    <table>
+        <tr>
+            <th>Scan ID</th>
+            <th>Scan Type</th>
+            <th>Patient ID</th>
+            <th>Image Count</th>
+        </tr>
+
+        {% for scan in scans %}
+            <tr>
+                <th>{{ scan.scan_id }}</th>
+                <th>{{ scan.scan_type }}</th>
+                <th> {{ scan.patient_id }}</th>
+                <th> {{ scan.image_set.all.count }}</th>
+            </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
