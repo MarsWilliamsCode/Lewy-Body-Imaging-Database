@@ -6,12 +6,13 @@
 </head>
 <style>
 table, th, td {
-  border:1px solid black;
+  border:1px solid black
+
 }
 </style>
 <body>
-    <h1>Scans for PD</h1>
-    <table style="width:100%">
+    <h1>Scans for Parkinson's Disease</h1>
+    <table>
         <tr>
             <th>Scan ID</th>
             <th>Scan Type</th>
@@ -21,7 +22,7 @@ table, th, td {
             <th>Image Count</th>
         </tr>
 
-        {% for scan in scans %}
+        {% for scan in scan_list %}
             <tr>
                 <th>{{ scan.scan_id }}</th>
                 <th>{{ scan.scan_type }}</th>

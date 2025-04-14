@@ -1,0 +1,83 @@
+body{
+    background: #071021 url("AdobeStock_Background.svg") no-repeat;
+    background-size: cover;
+    margin:0;
+    font-family: Inter, sans-serif;
+
+
+        header{
+        position: static;
+        top: 0;
+        background-color: white;
+        padding: 0;
+        margin: 0;
+    }
+
+    .header-container{
+        display: flex;
+        flex-direction: row;
+        padding: 10px;
+    }
+    h1{
+        padding: 5px;
+        top: 0;
+        margin: 0;
+        font-size: 24px;
+    }
+    .search-container{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 90vh;
+    }
+    .search-box{
+        background-color: white;
+        width: 60%;
+        height: 10vh;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        border-radius: 10px;
+        align-content: space-between;
+
+    }
+    select{
+        align-content: center;
+        font-weight: 400;
+        font-size: 16px;
+        height: 5vh;
+        width:auto;
+        border: solid #D0D5DD 1px;
+        background-color: white;
+        border-radius: 10px;
+
+    }
+    input {
+        align-content: center;
+        background-color: white;
+        border: solid #D0D5DD 1px;
+        border-radius: 10px;
+        font-weight: 400;
+        font-size: 16px;
+        height: 5vh;
+        width: 65%;
+
+    }
+    button{
+        width: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-content: center;
+        background-color: black;
+        color: white;
+        font-weight: 300;
+        padding: 15px;
+        font-size: 1rem;
+        border-radius: 10px;
+        img{
+            padding-right: 10px;
+        }
+
+    }
+}

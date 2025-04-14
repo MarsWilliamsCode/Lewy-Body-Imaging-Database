@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<link rel="stylesheet" href="{% static 'landing.css' %}"/>
+<body>
+<header class="header">
+    <div class="header-container">
+        <img src="{% static 'logo.svg' %}">
+        <h1>LBDIA</h1>
+    </div>
+</header>
+<div class='search-container'>
+    <div class="search-box">
+        <select class="dropdown">
+            <option selected>All</option>
+            <option>Disease</option>
+            <option>Scan Modality</option>
+            <option>Disease Stage</option>
+        </select>
+    <input class='search' id='search' placeholder='Search...'/>
+        <div class="search-button">
+            <button>
+                <img src="{% static 'search.svg' %}">
+                Search
+            </button>
+        </div>
+
+    </div>
+
+</div>
+</body>
+</html>
