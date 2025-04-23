@@ -25,18 +25,10 @@ class Scan(models.Model):
         return Patient.objects.get(patient_id=self.patient_id)
 
 class Image(models.Model):
-    image_id = models.CharField( max_length=50)
+    image_id = models.CharField(primary_key=True, max_length=50)
     scan_id = models.ForeignKey(Scan, on_delete=models.CASCADE)
     image_type = models.CharField(max_length=25)
     storage_path = models.CharField(max_length=90, default="")
 
     def __str__(self):
         return str(self.image_id)
-
-class Annotation(models.Model):
-    annotation_id = models.CharField(primary_key=True, max_length=50)
-    image_id = models.ForeignKey(Image, on_delete=models.CASCADE)
-    label = models.CharField(max_length=25)
-
-    def __str__(self):
-        return str(self.annotation_id)
