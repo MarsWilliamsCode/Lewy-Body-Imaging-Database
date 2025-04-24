@@ -11,7 +11,8 @@ table, th, td {
 }
 </style>
 <body>
-    <h1>Scans for Parkinson's Disease</h1>
+    <h1>Scans for {{request.GET.q}}</h1>
+    <h2>Showing {{ scans | length }} Results</h2>
     <table>
         <tr>
             <th>Scan ID</th>

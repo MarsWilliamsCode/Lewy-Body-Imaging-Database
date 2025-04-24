@@ -13,11 +13,9 @@ def search_results(request):
     logger = logging.getLogger('django')
     def get_queryset():
         queryFilter = request.GET.get("filter")
-        logger.info(f"queryFilter: {queryFilter}")
         queryString = request.GET.get("q")
         queryList = re.split(r',\s*', queryString)
 
-        logger.info(f"queryList: {queryList}")
         if queryFilter == 'All':
             scan_list = Scan.objects.filter(patient_id=-1)
             for query in queryList:
@@ -44,8 +42,7 @@ def search_results(request):
                 scan_list = scan_list.union(Scan.objects.filter(
                     Q(patient_id__disease_stage__icontains=query)
                 ))
-        logger.info(f"scan_list: {scan_list}")
         return scan_list
-    return render(request, "search_results.html", {'scans': get_queryset()})
+    return render(request, "search_results.html", {'scans': get_queryset(), 'request': request})
 
 
