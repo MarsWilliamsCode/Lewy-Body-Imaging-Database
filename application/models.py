@@ -5,7 +5,7 @@ class Patient(models.Model):
     age = models.IntegerField(blank=True, null=True)
     sex = models.CharField(max_length=2, blank=True, null=True)
     diagnosis = models.CharField(max_length=25)
-    disease_stage = models.CharField(max_length=5, blank=True, null=True)
+    disease_stage = models.CharField(max_length=10, blank=True, null=True)
     enrollment_date = models.DateField(blank=True, null=True)
 
     def __str__(self):
@@ -27,7 +27,7 @@ class Scan(models.Model):
 class Image(models.Model):
     image_id = models.CharField(primary_key=True, max_length=50)
     scan_id = models.ForeignKey(Scan, on_delete=models.CASCADE)
-    image_type = models.CharField(max_length=25)
+    image_type = models.CharField(max_length=25, default='PNG')
     image_file = models.ImageField(blank=True, null=True)
 
     def __str__(self):
