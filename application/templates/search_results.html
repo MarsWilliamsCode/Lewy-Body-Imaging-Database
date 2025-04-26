@@ -50,7 +50,7 @@
             {% for scan in scans %}
                 {% if scan.image_set.all.count != 0 %}
                     <tr>
-                        <td>{{ scan.scan_id }}</td>
+                        <td><a href="scan/{{ scan.scan_id }}">{{ scan.scan_id }}</a></td>
                         <td>{{ scan.scan_type }}</td>
                         <td> {{ scan.patient_id }}</td>
                         <td> {{ scan.get_patient.diagnosis }}</td>

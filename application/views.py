@@ -1,7 +1,7 @@
 import re
 
 from django.shortcuts import render
-from .models import Scan
+from .models import Scan, Image
 from django.db.models import Q
 import logging
 
@@ -44,5 +44,12 @@ def search_results(request):
                 ))
         return scan_list
     return render(request, "search_results.html", {'scans': get_queryset(), 'request': request})
+
+def scan_page(request, scan_id):
+    logger = logging.getLogger('django')
+    scan = Scan.objects.get(scan_id=scan_id)
+    images = Image.objects.filter(scan_id_id=scan_id)
+    context = {'scan': scan, 'images': images}
+    return render(request, "scan.html", context)
 
 
