@@ -1,40 +1,65 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Lewy Body DB</title>
+    <link rel="icon" href="{% static 'logo.svg' %}" />
 </head>
-<style>
-table, th, td {
-  border:1px solid black
-
-}
-</style>
+<link rel="stylesheet" href="{% static 'search_results.css' %}"/>
 <body>
-    <h1>Scans for {{request.GET.q}}</h1>
+<header class="header">
+    <div class="header-container">
+        <img src="{% static 'logo.svg' %}">
+        <h1>LBDIA</h1>
+    </div>
+    <div class="search-box">
+        <form class="search-form" action="{% url 'search_results' %}" method="get">
+            <select class="dropdown" name="filter">
+            <option selected value="All">All</option>
+            <option value="Disease">Disease</option>
+            <option value="Modality">Scan Modality</option>
+            <option value="Stage">Disease Stage</option>
+        </select>
+        <input class='search' name="q" id='search' placeholder='Search...'/>
+        <div class="search-button">
+            <button>
+                <img src="{% static 'search.svg' %}">
+                Search
+            </button>
+        </div>
+        </form>
+    </div>
+</header>
+    <div class="results-info">
+     <h1>Scans for {{request.GET.q}}</h1>
     <h2>Showing {{ scans | length }} Results</h2>
-    <table>
-        <tr>
-            <th>Scan ID</th>
-            <th>Scan Type</th>
-            <th>Patient ID</th>
-            <th>Patient Diagnosis</th>
-            <th>Disease Stage</th>
-            <th>Image Count</th>
-        </tr>
 
-        {% for scan in scans %}
+    </div>
+    <div class="results-container">
+        <table>
             <tr>
-                <th>{{ scan.scan_id }}</th>
-                <th>{{ scan.scan_type }}</th>
-                <th> {{ scan.patient_id }}</th>
-                <th> {{ scan.get_patient.diagnosis }}</th>
-                <th> {{ scan.get_patient.disease_stage }}</th>
-                <th> {{ scan.image_set.all.count }}</th>
+                <th>Scan ID</th>
+                <th>Scan Type</th>
+                <th>Patient ID</th>
+                <th>Patient Diagnosis</th>
+                <th>Disease Stage</th>
+                <th>Image Count</th>
             </tr>
 
-        {% endfor %}
-    </table>
-
+            {% for scan in scans %}
+                {% if scan.image_set.all.count != 0 %}
+                    <tr>
+                        <td>{{ scan.scan_id }}</td>
+                        <td>{{ scan.scan_type }}</td>
+                        <td> {{ scan.patient_id }}</td>
+                        <td> {{ scan.get_patient.diagnosis }}</td>
+                        <td> {{ scan.get_patient.disease_stage }}</td>
+                        <td> {{ scan.image_set.all.count }}</td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+    </div>
 </body>
 </html>
