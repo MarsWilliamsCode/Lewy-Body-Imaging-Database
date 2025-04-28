@@ -45,6 +45,9 @@ body{
             img{
                 width: 35%;
             }
+            h1{
+                margin-left: 4px;
+            }
         }
         a:visited {
         text-decoration: none;
