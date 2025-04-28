@@ -28,7 +28,8 @@ class Image(models.Model):
     image_id = models.CharField(primary_key=True, max_length=50)
     scan_id = models.ForeignKey(Scan, on_delete=models.CASCADE)
     image_type = models.CharField(max_length=25, default='PNG')
-    image_file = models.ImageField(blank=True, null=True)
+    image_file = models.FileField(blank=True, null=True)
+    image_url = models.URLField(blank=True, null=True)
 
     def __str__(self):
         return str(self.image_id)
