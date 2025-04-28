@@ -36,7 +36,7 @@
     <div class="main-container">
         <div class="info-box">
             <div class="back-button">
-                <a><img src="{% static 'chevron_left.svg' %}"/></a>
+                <a href="{{request.META.HTTP_REFERER|escape}}"><img src="{% static 'chevron_left.svg' %}"/></a>
             </div>
             <div class="scan-container">
                 <p>Scan:</p>
