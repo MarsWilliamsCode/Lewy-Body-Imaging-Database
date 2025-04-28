@@ -6,8 +6,67 @@
     <title>{{ scan.scan_id }} Images: LBDIA</title>
     <link rel="icon" href="{% static 'logo.svg' %}" />
 </head>
+<link rel="stylesheet" href="{% static 'scan.css' %}"/>
 <body>
-    <h1>{{ scan.scan_id }}</h1>
+    <header class="header">
+    <div class="header-container">
+        <a href="{% url 'search_landing' %}">
+        <img src="{% static 'logo.svg' %}">
+        <h1>LBDIA</h1>
+        </a>
+    </div>
+    <div class="search-box">
+        <form class="search-form" action="{% url 'search_results' %}" method="get">
+            <select class="dropdown" name="filter">
+            <option selected value="All">All</option>
+            <option value="Disease">Disease</option>
+            <option value="Modality">Scan Modality</option>
+            <option value="Stage">Disease Stage</option>
+        </select>
+        <input class='search' name="q" id='search' placeholder='Search...'/>
+        <div class="search-button">
+            <button>
+                <img src="{% static 'search.svg' %}" referrerpolicy="no-referrer">
+                Search
+            </button>
+        </div>
+        </form>
+    </div>
+</header>
+    <div class="info-container">
+        <div class="info-box">
+            <h1>Scan: {{ scan.scan_id }}</h1>
+            <div class="patient-info">
+                <div>
+                   <h4>Patient ID:</h4>
+                    <p>{{ scan.patient_id }}</p>
+                </div>
+                <div>
+                    <h4>Patient Age:</h4>
+                    <p>{{ scan.get_patient.age }}</p>
+                </div>
+                <div>
+                    <h4>Patient Sex:</h4>
+                    <p>{{ scan.get_patient.sex }}</p>
+                </div>
+                <div>
+                    <h4>Diagnosis:</h4>
+                    <p>{{ scan.get_patient.diagnosis }}</p>
+                </div>
+                <div>
+                    <h4>Disease Stage:</h4>
+                    <p>{{ scan.get_patient.disease_stage }}</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="image-grid">
+        {% for image in images %}
+            <img class='image' referrerpolicy="no-referrer" src={{image.image_url}}  />
+        {% endfor %}
+    </div>
+
 
 </body>
 </html>
