@@ -155,7 +155,7 @@ STORAGES = {
 }
 
 
-MEDIA_URL = f'{AWS_S3_URL_PROTOCOL}://{AWS_S3_CUSTOM_DOMAIN}/media/'
+MEDIA_URL = f'{AWS_S3_URL_PROTOCOL}://{AWS_S3_CUSTOM_DOMAIN}/'
 STATIC_ROOT = BASE_DIR / 'static'
 STATIC_URL = 'static/'
 # Default primary key field type

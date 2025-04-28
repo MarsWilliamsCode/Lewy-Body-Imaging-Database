@@ -1,10 +1,11 @@
 import re
-
 from django.shortcuts import render
 from .models import Scan, Image
 from django.db.models import Q
 import logging
-
+import boto3
+from botocore.exceptions import NoCredentialsError
+from django.conf import settings
 
 def search_landing(request):
     return render(request, 'search_landing.html')
@@ -49,7 +50,4 @@ def scan_page(request, scan_id):
     logger = logging.getLogger('django')
     scan = Scan.objects.get(scan_id=scan_id)
     images = Image.objects.filter(scan_id_id=scan_id)
-    context = {'scan': scan, 'images': images}
-    return render(request, "scan.html", context)
-
-
+    return render(request, "scan.html", {'scan': scan, 'images': images})

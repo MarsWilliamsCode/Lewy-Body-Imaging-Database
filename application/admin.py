@@ -1,10 +1,10 @@
 from django.contrib import admin
 from .models import Patient, Scan, Image
-
-# Register your models here.
-
+from .utils import upload_image_to_s3
+from .forms import ImageAdminForm
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):
+    form = ImageAdminForm
     autocomplete_fields = ("scan_id", )
 
 @admin.register(Scan)
