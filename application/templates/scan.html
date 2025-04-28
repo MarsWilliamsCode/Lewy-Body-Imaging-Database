@@ -33,40 +33,50 @@
         </form>
     </div>
 </header>
-    <div class="info-container">
+    <div class="main-container">
         <div class="info-box">
-            <h1>Scan: {{ scan.scan_id }}</h1>
+            <div class="back-button">
+                <a><img src="{% static 'chevron_left.svg' %}"/></a>
+            </div>
+            <div class="scan-container">
+                <p>Scan:</p>
+                <h4 class="Scan">{{ scan.scan_id }}</h4>
+            </div>
             <div class="patient-info">
                 <div>
-                   <h4>Patient ID:</h4>
-                    <p>{{ scan.patient_id }}</p>
+                    <p>Patient ID:</p>
+                    <h4>{{ scan.patient_id }}</h4>
                 </div>
                 <div>
-                    <h4>Patient Age:</h4>
-                    <p>{{ scan.get_patient.age }}</p>
+                    <p>Age:</p>
+                    <h4>{{ scan.get_patient.age }}</h4>
                 </div>
                 <div>
-                    <h4>Patient Sex:</h4>
-                    <p>{{ scan.get_patient.sex }}</p>
+                    <p>Sex:</p>
+                    <h4>{{ scan.get_patient.sex }}</h4>
                 </div>
                 <div>
-                    <h4>Diagnosis:</h4>
-                    <p>{{ scan.get_patient.diagnosis }}</p>
+                    <p>Diagnosis:</p>
+                    <h4>{{ scan.get_patient.diagnosis }}</h4>
                 </div>
                 <div>
-                    <h4>Disease Stage:</h4>
-                    <p>{{ scan.get_patient.disease_stage }}</p>
+                    <p>Stage:</p>
+                    <h4>{{ scan.get_patient.disease_stage }}</h4>
                 </div>
 
             </div>
         </div>
-    </div>
-    <div class="image-grid">
-        {% for image in images %}
+        <div class="download-container">
+            <a class="download-button" href="{% url 'download_zipfile' scan.scan_id %}">
+                <img class="download-button-img" src="{% static 'Download.svg' %}"/>
+                Download All
+            </a>
+        </div>
+        <div class="image-grid">
+            {% for image in images %}
             <img class='image' referrerpolicy="no-referrer" src={{image.image_url}}  />
         {% endfor %}
+        </div>
     </div>
-
-
 </body>
 </html>

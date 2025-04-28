@@ -91,7 +91,7 @@ body{
         }
 
     }
-    .info-container{
+    .main-container{
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -100,44 +100,105 @@ body{
         font-size: 1rem;
         .info-box{
         margin-top: 2%;
-        width: 50%;
+        width: 75%;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         align-content: center;
         background: white;
-        border-radius: 5px;
-        h1{
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+        .back-button{
+            a{
+                text-decoration: none;
+                border-color: white;
+                box-shadow: none;
+            }
+            img{
+                width: 32px;
+                margin: 10px;
+            }
+        }
+        .scan-container{
+            display: flex;
+            flex-direction: column;
+            align-content: flex-start;
+            align-items: flex-start;
+            .Scan{
+                font-size: 32px;
+                padding-left: 5%;
+                margin-bottom: 0;
+        }
+        }
 
+        p{
+            padding-left: 5%;
+            font-weight: 600;
+            color:gray;
+            text-align: left;
+            font-size: 12px;
+        }
+        h4{
+            padding-left: 5%;
+            margin-top: 2px;
+            text-align: left;
+            font-size: 14px;
+            text-wrap: nowrap;
         }
         .patient-info{
             display: flex;
+            flex-direction: row;
             align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            width: 50%;
+            align-content: center;
+            width: 60%;
             div{
                 display: flex;
-                width: 36%;
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-                align-content: space-between;
-                padding-right: 5%;
+                width: auto;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                align-content: center;
+                padding-left: 3%;
             }
         }
-    }
-
-    }
-.image-grid{
-    display: flex;
-    width: auto;
-    flex-wrap: wrap;
-    .image{
-        width: 251px;
-        border-color: white;
+        }
+        .download-container{
+            width: 75%;
+            background: white;
+            display: flex;
+            justify-content: flex-end;
+            .download-button{
+                display: flex;
+                align-content: center;
+                justify-content: center;
+                align-items: center;
+                width: 10%;
+                margin-right: 1%;
+                padding: 7px;
+                background: white;
+                color: black;
+                font-weight: 600;
+                font-size: 12px;
+                text-decoration: none;
+                border: 1px solid #D0D5DD;
+                border-radius: 4px;
+            }
+            img{
+                width: 18px;
+                border: none;
+            }
+        }
+        .image-grid{
+            display: flex;
+            flex-wrap: wrap;
+            width: 75%;
+            background: white;
+        .image{
+            width: 251px;
+            border-color: white;
+            padding: 4px;
+        }
     }
 }
-
 }
