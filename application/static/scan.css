@@ -224,7 +224,12 @@ body{
             width: 251px;
             border-color: white;
             padding: 4px;
+            transition:transform 0.25s ease;
         }
+        .image:hover{
+             transform:scale(1.5);
+        }
+
     }
 }
 }
