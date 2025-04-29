@@ -1,6 +1,5 @@
 from django.contrib import admin
 from .models import Patient, Scan, Image
-from .utils import upload_image_to_s3
 from .forms import ImageAdminForm
 @admin.register(Image)
 class ImageAdmin(admin.ModelAdmin):

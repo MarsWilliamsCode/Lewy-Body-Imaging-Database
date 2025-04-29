@@ -1,7 +1,6 @@
 from django import forms
 from .models import Image
-from .utils import upload_image_to_s3  # Import the function to upload to S3
-
+import credentials
 class ImageAdminForm(forms.ModelForm):
     class Meta:
         model = Image
@@ -18,7 +17,7 @@ class ImageAdminForm(forms.ModelForm):
             object_key = f"{image_file}"
 
             # Upload the image to S3 and get the public URL
-            s3_url = upload_image_to_s3(image_file, image_id, scan_id,object_key)
+            s3_url = f"https://{credentials.AWS_STORAGE_BUCKET_NAME}.s3.{credentials.AWS_S3_REGION_NAME}.amazonaws.com/{object_key}"
 
             # Set the public URL in the instance before saving
             self.instance.image_url = s3_url
